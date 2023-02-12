@@ -1,3 +1,11 @@
 #okvir{
 -fx-background-color: blue;
 }
+#meni{
+-fx-font-size: 20pt;
+-fx-font-weight: bold;
+-fx-text-fill: white;
+}
+#novaIgra,#statistika,#opcije,#dodajIgrace{
+-fx-text-fill: white;
+}
