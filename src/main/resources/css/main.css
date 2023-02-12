@@ -9,3 +9,6 @@
 #novaIgra,#statistika,#opcije,#dodajIgrace{
 -fx-text-fill: white;
 }
+#slika{
+-fx-background-repeat: stretch;
+}
