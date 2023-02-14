@@ -57,6 +57,9 @@
          </font>
       </Label>
       <Separator prefWidth="200.0" />
-      <Button mnemonicParsing="false" text="Nazad" />
+      <Button mnemonicParsing="false" text="Nazad">
+         <font>
+            <Font size="24.0" />
+         </font></Button>
    </children>
 </VBox>
