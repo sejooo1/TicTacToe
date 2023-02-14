@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" spacing="5.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" spacing="5.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ba.unsa.etf.rpr.OdabirIgracaController">
    <children>
       <Label text="Odaberi igrače:">
          <font>
@@ -13,23 +13,23 @@
       </Label>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="5.0">
          <children>
-            <ChoiceBox prefWidth="150.0" />
+            <ChoiceBox fx:id="choiceBox1" prefWidth="150.0" />
             <Label text="VS">
                <font>
                   <Font size="24.0" />
                </font>
             </Label>
-            <ChoiceBox prefWidth="150.0" />
+            <ChoiceBox fx:id="choiceBox2" prefWidth="150.0" />
          </children>
       </HBox>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="5.0">
          <children>
-            <Button mnemonicParsing="false" text="Igraj">
+            <Button mnemonicParsing="false" onAction="#handleIgrajClick" text="Igraj">
                <font>
                   <Font size="24.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" text="Nazad">
+            <Button mnemonicParsing="false" onAction="#handleNazadClick" text="Nazad">
                <font>
                   <Font size="24.0" />
                </font>
