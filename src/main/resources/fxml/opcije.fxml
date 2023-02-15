@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ba.unsa.etf.rpr.OpcijeController">
+<VBox fx:id="okvir" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ba.unsa.etf.rpr.OpcijeController">
+   <stylesheets>
+      <URL value="@/css/opcije.css" />
+   </stylesheets>
    <children>
-      <Label text="Jezik:">
+      <Label fx:id="jezik" text="Jezik:">
          <font>
             <Font size="43.0" />
          </font>
@@ -21,7 +25,7 @@
                         <Image url="@../img/Flag_of_Bosnia_and_Herzegovina.svg.png" />
                      </image>
                   </ImageView>
-                  <Label text="Bosanski">
+                  <Label fx:id="bosanski" text="Bosanski">
                      <font>
                         <Font size="24.0" />
                      </font>
@@ -36,7 +40,7 @@
                         <Image url="@../img/800px-English_language.svg.png" />
                      </image>
                   </ImageView>
-                  <Label text="Engleski">
+                  <Label fx:id="engleski" text="Engleski">
                      <font>
                         <Font size="24.0" />
                      </font>
@@ -46,12 +50,12 @@
          </children>
       </HBox>
       <Separator prefWidth="200.0" />
-      <Label text="Kako igrati?">
+      <Label fx:id="kako" text="Kako igrati?">
          <font>
             <Font size="43.0" />
          </font>
       </Label>
-      <Label text="Bla bla">
+      <Label fx:id="opis" text="Bla bla">
          <font>
             <Font size="24.0" />
          </font>
