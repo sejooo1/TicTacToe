@@ -23,4 +23,7 @@ public class IgraController {
             e.printStackTrace();
         }
     }
+
+    public void buttonClicked(ActionEvent actionEvent) {
+    }
 }
