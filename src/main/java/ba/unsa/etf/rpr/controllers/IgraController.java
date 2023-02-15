@@ -9,8 +9,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -104,12 +102,12 @@ public class IgraController {
 
         // Check for tie game
         if (moves == 9) {
-            naslov.setText("Tie Game!");
+            naslov.setText("Neriješeno!");
             disableButtons();
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Game Over");
+            alert.setTitle("Kraj igre");
             alert.setHeaderText(null);
-            alert.setContentText("The game ended in a tie!");
+            alert.setContentText("Igra je završila neriješenim rezultatom!");
             alert.showAndWait();
             return;
         }
@@ -128,9 +126,9 @@ public class IgraController {
         button2.setStyle("-fx-background-color: red");
         button3.setStyle("-fx-background-color: red");
         disableButtons();
-        String message = winner == null ? "The game ended in a tie!" : winner + " has won the game!";
+        String message = winner == null ? "Igra je završila neriješenim rezultatom!" : winner + " je pobijedio!";
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Game Over");
+        alert.setTitle("Kraj igre");
         alert.setHeaderText(null);
         alert.setContentText(message);
         alert.showAndWait();
@@ -158,7 +156,7 @@ public class IgraController {
             moves++;
             checkForWin();
             playerXTurn = !playerXTurn;
-            naslov.setText("Player " + (playerXTurn ? "X" : "O") + "'s turn");
+            naslov.setText("Igrač " + (playerXTurn ? "X" : "O") + " je na redu");
         }
     }
 
