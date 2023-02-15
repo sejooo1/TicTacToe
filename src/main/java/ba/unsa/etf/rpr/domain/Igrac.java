@@ -3,12 +3,12 @@ package ba.unsa.etf.rpr.domain;
 import java.util.Objects;
 
 public class Igrac implements Idable{
-    int id;
-    String ime;
-    int brojPobjeda;
-    int brojPoraza;
-    int brojNerijesenih;
-    String kojiJeIgrac;
+    private int id;
+    private String ime;
+    private int brojPobjeda;
+    private int brojPoraza;
+    private int brojNerijesenih;
+    private String kojiJeIgrac;
 
     public Igrac(int id, String ime, int brojPobjeda, int brojPoraza, int brojNerijesenih, String kojiJeIgrac) {
         this.id = id;
