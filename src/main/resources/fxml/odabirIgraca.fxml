@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" spacing="5.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ba.unsa.etf.rpr.OdabirIgracaController">
+<VBox fx:id="okvir" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" spacing="5.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ba.unsa.etf.rpr.OdabirIgracaController">
+   <stylesheets>
+      <URL value="@/css/odabirIgraca.css" />
+   </stylesheets>
    <children>
-      <Label text="Odaberi igrače:">
+      <Label fx:id="odaberi" text="Odaberi igrače:">
          <font>
             <Font size="24.0" />
          </font>
@@ -14,7 +18,7 @@
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="5.0">
          <children>
             <ChoiceBox fx:id="choiceBox1" prefWidth="150.0" />
-            <Label text="VS">
+            <Label fx:id="vs" text="VS">
                <font>
                   <Font size="24.0" />
                </font>
