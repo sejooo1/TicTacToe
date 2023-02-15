@@ -9,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -65,45 +66,52 @@ public class IgraController {
     private void checkForWin() {
         // Horizontal Wins
         if (checkRow(button1, button2, button3)) {
-            showWinner(button1);
+            showWinner(button1, button2, button3);
             return;
         }
         if (checkRow(button4, button5, button6)) {
-            showWinner(button4);
+            showWinner(button4, button5, button6);
             return;
         }
         if (checkRow(button7, button8, button9)) {
-            showWinner(button7);
+            showWinner(button7, button8, button9);
             return;
         }
 
         // Vertical Wins
         if (checkRow(button1, button4, button7)) {
-            showWinner(button1);
+            showWinner(button1, button4, button7);
             return;
         }
         if (checkRow(button2, button5, button8)) {
-            showWinner(button2);
+            showWinner(button2, button5, button8);
             return;
         }
         if (checkRow(button3, button6, button9)) {
-            showWinner(button3);
+            showWinner(button3, button6, button9);
             return;
         }
 
         // Diagonal Wins
         if (checkRow(button1, button5, button9)) {
-            showWinner(button1);
+            showWinner(button1, button5, button9);
             return;
         }
         if (checkRow(button3, button5, button7)) {
-            showWinner(button3);
+            showWinner(button3, button5, button7);
             return;
         }
 
         // Check for tie game
         if (moves == 9) {
             naslov.setText("Tie Game!");
+            disableButtons();
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Game Over");
+            alert.setHeaderText(null);
+            alert.setContentText("The game ended in a tie!");
+            alert.showAndWait();
+            return;
         }
     }
 
@@ -114,15 +122,18 @@ public class IgraController {
         return (!s1.isEmpty() && s1.equals(s2) && s2.equals(s3));
     }
 
-    private void showWinner(Button button) {
+    private void showWinner(Button button1, Button button2, Button button3) {
         String winner = playerXTurn ? "X" : "O";
+        button1.setStyle("-fx-background-color: red");
+        button2.setStyle("-fx-background-color: red");
+        button3.setStyle("-fx-background-color: red");
+        disableButtons();
         String message = winner == null ? "The game ended in a tie!" : winner + " has won the game!";
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Game Over");
         alert.setHeaderText(null);
         alert.setContentText(message);
         alert.showAndWait();
-        disableButtons();
     }
 
     private void disableButtons() {
@@ -149,5 +160,41 @@ public class IgraController {
             playerXTurn = !playerXTurn;
             naslov.setText("Player " + (playerXTurn ? "X" : "O") + "'s turn");
         }
+    }
+
+    public void handleRestartClick(ActionEvent actionEvent) {
+        button1.setText("");
+        button2.setText("");
+        button3.setText("");
+        button4.setText("");
+        button5.setText("");
+        button6.setText("");
+        button7.setText("");
+        button8.setText("");
+        button9.setText("");
+
+        button1.setDisable(false);
+        button2.setDisable(false);
+        button3.setDisable(false);
+        button4.setDisable(false);
+        button5.setDisable(false);
+        button6.setDisable(false);
+        button7.setDisable(false);
+        button8.setDisable(false);
+        button9.setDisable(false);
+
+        button1.setStyle(null);
+        button2.setStyle(null);
+        button3.setStyle(null);
+        button4.setStyle(null);
+        button5.setStyle(null);
+        button6.setStyle(null);
+        button7.setStyle(null);
+        button8.setStyle(null);
+        button9.setStyle(null);
+
+        naslov.setText("Tic Tac Toe");
+        moves = 0;
+        playerXTurn = true;
     }
 }
