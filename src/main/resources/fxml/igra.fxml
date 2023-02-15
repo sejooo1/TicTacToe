@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ba.unsa.etf.rpr.IgraController">
+<BorderPane fx:id="okvir" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ba.unsa.etf.rpr.IgraController">
+   <stylesheets>
+      <URL value="@/css/igra.css" />
+   </stylesheets>
    <center>
       <GridPane BorderPane.alignment="CENTER">
         <columnConstraints>
@@ -71,7 +75,7 @@
       </GridPane>
    </center>
    <top>
-      <Label text="Igrač neki je na redu" BorderPane.alignment="CENTER">
+      <Label fx:id="naslov" text="Igrač neki je na redu" BorderPane.alignment="CENTER">
          <font>
             <Font size="43.0" />
          </font>
