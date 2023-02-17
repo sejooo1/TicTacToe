@@ -15,6 +15,10 @@ public class Mec implements Idable{
         this.idTipa = idTipa;
     }
 
+    public Mec() {
+
+    }
+
     public int getId() {
         return idMeca;
     }
