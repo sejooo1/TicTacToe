@@ -75,14 +75,7 @@ public class Igrac implements Idable{
 
     @Override
     public String toString() {
-        return "Igrac{" +
-                "id=" + id +
-                ", ime='" + ime + '\'' +
-                ", brojPobjeda=" + brojPobjeda +
-                ", brojPoraza=" + brojPoraza +
-                ", brojNerijesenih=" + brojNerijesenih +
-                ", kojiJeIgrac='" + kojiJeIgrac + '\'' +
-                '}';
+        return ime;
     }
 
     @Override
