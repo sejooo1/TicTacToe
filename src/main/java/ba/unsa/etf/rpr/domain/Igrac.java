@@ -19,6 +19,10 @@ public class Igrac implements Idable{
         this.kojiJeIgrac = kojiJeIgrac;
     }
 
+    public Igrac() {
+
+    }
+
     @Override
     public int getId() {
         return id;
