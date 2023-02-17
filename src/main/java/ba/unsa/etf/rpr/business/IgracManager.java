@@ -11,7 +11,7 @@ public class IgracManager {
         return FactoryDAO.igracDAO().getAll();
     }
 
-    public List<Igrac> searchQuotes(String ime) throws MojException {
+    public List<Igrac> dajPoImenu(String ime) throws MojException {
         return FactoryDAO.igracDAO().dajPoImenu(ime);
     }
 
