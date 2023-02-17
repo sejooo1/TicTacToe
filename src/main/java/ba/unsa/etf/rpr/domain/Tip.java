@@ -11,6 +11,10 @@ public class Tip implements Idable{
         this.opis = opis;
     }
 
+    public Tip() {
+
+    }
+
     @Override
     public int getId() {
         return id;
