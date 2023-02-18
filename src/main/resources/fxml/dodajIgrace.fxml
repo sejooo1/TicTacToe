@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<?import java.net.URL?>
 <VBox fx:id="okvir" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ba.unsa.etf.rpr.controllers.DodajIgraceController">
    <stylesheets>
       <URL value="@/css/dodajIgrace.css" />
@@ -22,7 +22,7 @@
                   <Font size="24.0" />
                </font>
             </Label>
-            <TextField promptText="Unesi ime">
+            <TextField fx:id="unesiIme" promptText="Unesi ime">
                <font>
                   <Font size="24.0" />
                </font>
@@ -31,7 +31,7 @@
       </HBox>
       <HBox alignment="CENTER" spacing="5.0">
          <children>
-            <Button mnemonicParsing="false" text="Dodaj">
+            <Button mnemonicParsing="false" onAction="#handleDodajClick" text="Dodaj">
                <font>
                   <Font size="24.0" />
                </font>
