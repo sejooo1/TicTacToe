@@ -1,5 +1,6 @@
 package ba.unsa.etf.rpr.controllers;
 
+import ba.unsa.etf.rpr.domain.Igrac;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -14,6 +15,14 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class IgraController {
+    private Igrac igracX;
+    private Igrac igracO;
+
+    public IgraController(Igrac selectedIgrac1, Igrac selectedIgrac2) {
+        igracX = selectedIgrac1;
+        igracO = selectedIgrac2;
+    }
+
     @FXML
     public void handleNazadClick(ActionEvent event) {
         try {
