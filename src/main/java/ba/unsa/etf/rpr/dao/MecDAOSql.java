@@ -30,7 +30,7 @@ public class MecDAOSql extends AbstractDAO<Mec> implements MecDAO{
     public Mec dajIzResultSeta(ResultSet rs) throws MojException {
         try {
         Mec q = new Mec();
-        q.setId(rs.getInt("id"));
+        q.setId(rs.getInt("idMeca"));
         q.setIdX(rs.getInt("idX"));
         q.setIdO(rs.getInt("idO"));
         q.setIdTipa(rs.getInt("idTipa"));
@@ -43,7 +43,7 @@ public class MecDAOSql extends AbstractDAO<Mec> implements MecDAO{
     @Override
     public Map<String, Object> dajUTabelu(Mec object) {
         Map<String, Object> item = new TreeMap<>();
-        item.put("id", object.getId());
+        item.put("idMeca", object.getId());
         item.put("idX", object.getIdX());
         item.put("idO", object.getIdO());
         item.put("idTipa", object.getIdTipa());
