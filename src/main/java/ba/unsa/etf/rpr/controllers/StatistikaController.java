@@ -1,7 +1,9 @@
 package ba.unsa.etf.rpr.controllers;
 
 import ba.unsa.etf.rpr.business.IgracManager;
+import ba.unsa.etf.rpr.business.MecManager;
 import ba.unsa.etf.rpr.domain.Igrac;
+import ba.unsa.etf.rpr.domain.Mec;
 import ba.unsa.etf.rpr.exceptions.MojException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -19,7 +21,10 @@ import javafx.stage.Stage;
 
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 public class StatistikaController {
@@ -28,6 +33,7 @@ public class StatistikaController {
     @FXML
     private ChoiceBox choiceBox;
     private IgracManager igracManager = new IgracManager();
+    private MecManager mecManager = new MecManager();
 
     @FXML
     public void initialize() {
@@ -37,15 +43,47 @@ public class StatistikaController {
             choiceBox.setItems(items);
             choiceBox.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
                 if (newValue != null) {
-                    pp.setText(String.valueOf(((Igrac) newValue).getBrojPobjeda()));
-                    po.setText(String.valueOf(((Igrac) newValue).getBrojPoraza()));
-                    iz.setText(String.valueOf(((Igrac) newValue).getBrojNerijesenih()));
-                    //pobjede
+                    po.setText(String.valueOf(((Igrac) newValue).getBrojPobjeda()));
+                    iz.setText(String.valueOf(((Igrac) newValue).getBrojPoraza()));
+                    ne.setText(String.valueOf(((Igrac) newValue).getBrojNerijesenih()));
+                    try {
+                        int idPobjednika = ((Igrac)newValue).getId();
+                        List<Mec> mecevi = mecManager.dajPobjedeIgraca(idPobjednika);
+                        if(mecevi.size() == 0) pp.setText(String.valueOf(0));
+                        else {
+                            List<Integer> idGubitnika = new ArrayList<>();
+                            for (Mec mec: mecevi){
+                                if (mec.getIdX() == idPobjednika) idGubitnika.add(mec.getIdO());
+                                if (mec.getIdO() == idPobjednika) idGubitnika.add(mec.getIdX());
+                            }
+                            int gubitnik = findMostFrequent(idGubitnika);
+                            pp.setText(igracManager.getById(gubitnik).getIme());
+                        }
+                    } catch (MojException e) {
+                        throw new RuntimeException(e);
+                    }
                 }
             });
         } catch (MojException e) {
             new Alert(Alert.AlertType.NONE, e.getMessage(), ButtonType.OK).show();
         }
+    }
+
+    public static int findMostFrequent(List<Integer> list) {
+        Map<Integer, Integer> frequencyMap = new HashMap<>();
+
+        for (int i : list) {
+            frequencyMap.put(i, frequencyMap.getOrDefault(i, 0) + 1);
+        }
+
+        int mostFrequent = list.get(0);
+        for (int i : list) {
+            if (frequencyMap.get(i) > frequencyMap.get(mostFrequent)) {
+                mostFrequent = i;
+            }
+        }
+
+        return mostFrequent;
     }
 
     @FXML
