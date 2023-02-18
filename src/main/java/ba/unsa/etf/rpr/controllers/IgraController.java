@@ -17,25 +17,8 @@ import java.io.IOException;
 public class IgraController {
     private Igrac igracX;
     private Igrac igracO;
-
-    public IgraController(Igrac selectedIgrac1, Igrac selectedIgrac2) {
-        igracX = selectedIgrac1;
-        igracO = selectedIgrac2;
-    }
-
     @FXML
-    public void handleNazadClick(ActionEvent event) {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/odabirIgraca.fxml"));
-            Parent root = (Parent) fxmlLoader.load();
-            Scene newScene = new Scene(root);
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setScene(newScene);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
+    private Label naslov;
     @FXML
     private Button button1;
 
@@ -63,15 +46,38 @@ public class IgraController {
     @FXML
     private Button button9;
 
-    @FXML
-    private Label naslov;
+
 
     private boolean playerXTurn = true;
 
     private int moves = 0;
 
+    public IgraController(Igrac selectedIgrac1, Igrac selectedIgrac2) {
+        igracX = selectedIgrac1;
+        igracO = selectedIgrac2;
+    }
+
+    public void initialize() {
+        naslov.setText("Igrač " + igracX.getIme() + " je na redu");
+    }
+
+    @FXML
+    public void handleNazadClick(ActionEvent event) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/odabirIgraca.fxml"));
+            Parent root = (Parent) fxmlLoader.load();
+            Scene newScene = new Scene(root);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(newScene);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+
     private void checkForWin() {
-        // Horizontal Wins
+
         if (checkRow(button1, button2, button3)) {
             showWinner(button1, button2, button3);
             return;
@@ -85,7 +91,7 @@ public class IgraController {
             return;
         }
 
-        // Vertical Wins
+
         if (checkRow(button1, button4, button7)) {
             showWinner(button1, button4, button7);
             return;
@@ -99,7 +105,7 @@ public class IgraController {
             return;
         }
 
-        // Diagonal Wins
+
         if (checkRow(button1, button5, button9)) {
             showWinner(button1, button5, button9);
             return;
@@ -109,7 +115,7 @@ public class IgraController {
             return;
         }
 
-        // Check for tie game
+
         if (moves == 9) {
             naslov.setText("Neriješeno!");
             disableButtons();
@@ -135,7 +141,9 @@ public class IgraController {
         button2.setStyle("-fx-background-color: red");
         button3.setStyle("-fx-background-color: red");
         disableButtons();
-        String message = winner == null ? "Igra je završila neriješenim rezultatom!" : winner + " je pobijedio!";
+        String message = null;
+        if(winner == "X") message = igracX.getIme() + " je pobijedio!";
+        if(winner == "O") message = igracO.getIme() + " je pobijedio!";
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Kraj igre");
         alert.setHeaderText(null);
@@ -165,7 +173,8 @@ public class IgraController {
             moves++;
             checkForWin();
             playerXTurn = !playerXTurn;
-            naslov.setText("Igrač " + (playerXTurn ? "X" : "O") + " je na redu");
+            if(playerXTurn) naslov.setText("Igrač " + igracX.getIme() + " je na redu");
+            else naslov.setText("Igrač " + igracO.getIme() + " je na redu");
         }
     }
 
@@ -200,7 +209,7 @@ public class IgraController {
         button8.setStyle(null);
         button9.setStyle(null);
 
-        naslov.setText("Tic Tac Toe");
+        naslov.setText("Igrač " + igracX.getIme() + " je na redu");
         moves = 0;
         playerXTurn = true;
     }
