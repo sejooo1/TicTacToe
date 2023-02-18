@@ -28,7 +28,7 @@
       </HBox>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="5.0">
          <children>
-            <Button mnemonicParsing="false" onAction="#handleIgrajClick" text="Igraj">
+            <Button fx:id="igrajButton" mnemonicParsing="false" text="Igraj">
                <font>
                   <Font size="24.0" />
                </font>
