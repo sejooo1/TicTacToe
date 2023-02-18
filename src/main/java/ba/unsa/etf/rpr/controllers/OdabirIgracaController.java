@@ -1,5 +1,10 @@
 package ba.unsa.etf.rpr.controllers;
 
+import ba.unsa.etf.rpr.business.IgracManager;
+import ba.unsa.etf.rpr.domain.Igrac;
+import ba.unsa.etf.rpr.exceptions.MojException;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,29 +16,53 @@ import javafx.scene.control.ChoiceBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.List;
 
 public class OdabirIgracaController {
     @FXML
-    private ChoiceBox<String> choiceBox1;
+    private ChoiceBox choiceBox1;
     @FXML
-    private ChoiceBox<String> choiceBox2;
+    private ChoiceBox choiceBox2;
+    private IgracManager igracManager = new IgracManager();
+    @FXML
+    private Button igrajButton;
 
     public void initialize() {
-        choiceBox1.getItems().addAll("Igrac 1", "Igrac 2", "Igrac 3");
-        choiceBox2.getItems().addAll("Igrac 1", "Igrac 2", "Igrac 3");
-    }
-
-    @FXML
-    public void handleIgrajClick(ActionEvent event) {
+        List<Igrac> igraci = null;
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/igra.fxml"));
-            Parent root = (Parent) fxmlLoader.load();
-            Scene newScene = new Scene(root);
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setScene(newScene);
-        } catch (IOException e) {
-            e.printStackTrace();
+            igraci = igracManager.getAll();
+            ObservableList<Igrac> items = FXCollections.observableArrayList(igraci);
+            choiceBox1.setItems(items);
+            choiceBox2.setItems(items);
+        } catch (MojException e) {
+            throw new RuntimeException(e);
         }
+        igrajButton.setDisable(true);
+        choiceBox1.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+        enableIgrajButtonIfNeeded();
+    });
+        choiceBox2.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+        enableIgrajButtonIfNeeded();
+    });
+}
+
+    private void enableIgrajButtonIfNeeded() {
+        Igrac selectedIgrac1 = (Igrac) choiceBox1.getSelectionModel().getSelectedItem();
+        Igrac selectedIgrac2 = (Igrac) choiceBox2.getSelectionModel().getSelectedItem();
+        igrajButton.setDisable(selectedIgrac1 == null || selectedIgrac2 == null || selectedIgrac1.equals(selectedIgrac2));
+        igrajButton.setOnAction(event -> {
+            try {
+                IgraController controller = new IgraController(selectedIgrac1, selectedIgrac2);
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/igra.fxml"));
+                fxmlLoader.setController(controller);
+                Parent root = fxmlLoader.load();
+                Scene newScene = new Scene(root);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(newScene);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
     }
 
     @FXML
