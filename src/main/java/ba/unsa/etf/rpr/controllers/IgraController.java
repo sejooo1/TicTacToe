@@ -1,6 +1,10 @@
 package ba.unsa.etf.rpr.controllers;
 
+import ba.unsa.etf.rpr.business.IgracManager;
+import ba.unsa.etf.rpr.business.MecManager;
 import ba.unsa.etf.rpr.domain.Igrac;
+import ba.unsa.etf.rpr.domain.Mec;
+import ba.unsa.etf.rpr.exceptions.MojException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,6 +21,8 @@ import java.io.IOException;
 public class IgraController {
     private Igrac igracX;
     private Igrac igracO;
+    private IgracManager igracManager = new IgracManager();
+    private MecManager mecManager = new MecManager();
     @FXML
     private Label naslov;
     @FXML
@@ -119,6 +125,19 @@ public class IgraController {
         if (moves == 9) {
             naslov.setText("Neriješeno!");
             disableButtons();
+            igracX.uvecajNerijesene();
+            igracO.uvecajNerijesene();
+            Mec mec = new Mec();
+            mec.setIdX(igracX.getId());
+            mec.setIdO(igracO.getId());
+            mec.setIdTipa(3);
+            try {
+                igracManager.update(igracX);
+                igracManager.update(igracO);
+                mecManager.add(mec);
+            } catch (MojException e) {
+                throw new RuntimeException(e);
+            }
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Kraj igre");
             alert.setHeaderText(null);
@@ -142,8 +161,38 @@ public class IgraController {
         button3.setStyle("-fx-background-color: red");
         disableButtons();
         String message = null;
-        if(winner == "X") message = igracX.getIme() + " je pobijedio!";
-        if(winner == "O") message = igracO.getIme() + " je pobijedio!";
+        if(winner == "X"){
+            message = igracX.getIme() + " je pobijedio!";
+            igracX.uvecajPobjedu();
+            igracO.uvecajPoraz();
+            Mec mec = new Mec();
+            mec.setIdX(igracX.getId());
+            mec.setIdO(igracO.getId());
+            mec.setIdTipa(1);
+            try {
+                igracManager.update(igracX);
+                igracManager.update(igracO);
+                mecManager.add(mec);
+            } catch (MojException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        if(winner == "O"){
+            message = igracO.getIme() + " je pobijedio!";
+            igracX.uvecajPoraz();
+            igracO.uvecajPobjedu();
+            Mec mec = new Mec();
+            mec.setIdX(igracX.getId());
+            mec.setIdO(igracO.getId());
+            mec.setIdTipa(2);
+            try {
+                igracManager.update(igracX);
+                igracManager.update(igracO);
+                mecManager.add(mec);
+            } catch (MojException e) {
+                throw new RuntimeException(e);
+            }
+        }
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Kraj igre");
         alert.setHeaderText(null);
