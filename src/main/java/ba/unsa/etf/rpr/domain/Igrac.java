@@ -73,6 +73,16 @@ public class Igrac implements Idable{
         this.kojiJeIgrac = kojiJeIgrac;
     }
 
+    public void uvecajPobjedu(){
+        brojPobjeda++;
+    }
+    public void uvecajPoraz(){
+        brojPoraza++;
+    }
+    public void uvecajNerijesene(){
+        brojNerijesenih++;
+    }
+
     @Override
     public String toString() {
         return ime;
