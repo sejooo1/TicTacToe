@@ -11,7 +11,7 @@
       <URL value="@/css/opcije.css" />
    </stylesheets>
    <children>
-      <Label fx:id="jezik" text="Jezik:">
+      <Label fx:id="jezik" text="%jezik">
          <font>
             <Font size="43.0" />
          </font>
@@ -25,7 +25,7 @@
                         <Image url="@../img/Flag_of_Bosnia_and_Herzegovina.svg.png" />
                      </image>
                   </ImageView>
-                  <Label fx:id="bosanski" text="Bosanski">
+                  <Label fx:id="bosanski" text="%bosanski">
                      <font>
                         <Font size="24.0" />
                      </font>
@@ -40,7 +40,7 @@
                         <Image url="@../img/800px-English_language.svg.png" />
                      </image>
                   </ImageView>
-                  <Label fx:id="engleski" text="Engleski">
+                  <Label fx:id="engleski" text="%engleski">
                      <font>
                         <Font size="24.0" />
                      </font>
@@ -50,18 +50,18 @@
          </children>
       </HBox>
       <Separator prefWidth="200.0" />
-      <Label fx:id="kako" text="Kako igrati?">
+      <Label fx:id="kako" text="%kakoigrati">
          <font>
             <Font size="43.0" />
          </font>
       </Label>
-      <Label fx:id="opis" text="Bla bla">
+      <Label fx:id="opis" text="%opis">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
       <Separator prefWidth="200.0" />
-      <Button mnemonicParsing="false" onAction="#handleNazadClick" text="Nazad">
+      <Button mnemonicParsing="false" onAction="#handleNazadClick" text="%nazad">
          <font>
             <Font size="24.0" />
          </font></Button>
