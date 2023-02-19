@@ -17,11 +17,19 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.ResourceBundle;
 
+/**
+ * Controller for DodajIgrace.
+ */
 public class DodajIgraceController {
     @FXML
     private TextField unesiIme;
     private IgracManager igracManager = new IgracManager();
 
+    /**
+     * Handle dodaj click.
+     *
+     * @param event the event
+     */
     @FXML
     public void handleDodajClick(ActionEvent event) {
         try {
@@ -42,6 +50,12 @@ public class DodajIgraceController {
             new Alert(Alert.AlertType.ERROR, e.getMessage(), ButtonType.OK).show();
         }
     }
+
+    /**
+     * Handle nazad click.
+     *
+     * @param event the event
+     */
     @FXML
     public void handleNazadClick(ActionEvent event) {
         try {
