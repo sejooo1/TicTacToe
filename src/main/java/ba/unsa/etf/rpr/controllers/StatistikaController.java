@@ -24,6 +24,9 @@ import java.io.IOException;
 import java.util.*;
 
 
+/**
+ * Controller for Statistika.
+ */
 public class StatistikaController {
     @FXML
     private Label pp,po,iz,ne;
@@ -32,6 +35,9 @@ public class StatistikaController {
     private IgracManager igracManager = new IgracManager();
     private MecManager mecManager = new MecManager();
 
+    /**
+     * Initialize.
+     */
     @FXML
     public void initialize() {
         try {
@@ -66,6 +72,12 @@ public class StatistikaController {
         }
     }
 
+    /**
+     * Find most frequent int.
+     *
+     * @param list the list
+     * @return the int
+     */
     public static int findMostFrequent(List<Integer> list) {
         Map<Integer, Integer> frequencyMap = new HashMap<>();
 
@@ -83,6 +95,11 @@ public class StatistikaController {
         return mostFrequent;
     }
 
+    /**
+     * Handle nazad click.
+     *
+     * @param event the event
+     */
     @FXML
     public void handleNazadClick(ActionEvent event) {
         try {
