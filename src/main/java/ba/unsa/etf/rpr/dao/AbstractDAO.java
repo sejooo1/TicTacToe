@@ -6,10 +6,20 @@ import ba.unsa.etf.rpr.exceptions.MojException;
 import java.sql.*;
 import java.util.*;
 
+/**
+ * Abstract class that implements core DAO CRUD methods for every entity.
+ *
+ * @param <T> the type parameter
+ */
 public abstract class AbstractDAO <T extends Idable> implements DAO<T> {
     private static Connection connection = null;
     private String imeTabele;
 
+    /**
+     * Instantiates a new Abstract dao.
+     *
+     * @param imeTabele the ime tabele
+     */
     public AbstractDAO(String imeTabele) {
         this.imeTabele = imeTabele;
         createConnection();
@@ -41,12 +51,30 @@ public abstract class AbstractDAO <T extends Idable> implements DAO<T> {
         }
     }
 
+    /**
+     * Get connection connection.
+     *
+     * @return the connection
+     */
     public static Connection getConnection(){
         return AbstractDAO.connection;
     }
 
+    /**
+     * Daj iz result seta t.
+     *
+     * @param rs the rs
+     * @return the t
+     * @throws MojException the moj exception
+     */
     public abstract T dajIzResultSeta(ResultSet rs) throws MojException;
 
+    /**
+     * Daj u tabelu map.
+     *
+     * @param object the object
+     * @return the map
+     */
     public abstract Map<String, Object> dajUTabelu(T object);
 
     public T getById(int id) throws MojException {
@@ -123,6 +151,14 @@ public abstract class AbstractDAO <T extends Idable> implements DAO<T> {
         }
     }
 
+    /**
+     * Execute query list.
+     *
+     * @param query  the query
+     * @param params the params
+     * @return the list
+     * @throws MojException the moj exception
+     */
     public List<T> executeQuery(String query, Object[] params) throws MojException{
         try {
             PreparedStatement stmt = getConnection().prepareStatement(query);
@@ -142,6 +178,14 @@ public abstract class AbstractDAO <T extends Idable> implements DAO<T> {
         }
     }
 
+    /**
+     * Execute query unique t.
+     *
+     * @param query  the query
+     * @param params the params
+     * @return the t
+     * @throws MojException the moj exception
+     */
     public T executeQueryUnique(String query, Object[] params) throws MojException{
         List<T> result = executeQuery(query, params);
         if (result != null && result.size() == 1){
