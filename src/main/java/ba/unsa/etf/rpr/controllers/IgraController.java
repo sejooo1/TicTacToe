@@ -17,6 +17,7 @@ import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ResourceBundle;
 
 public class IgraController {
     private Igrac igracX;
@@ -70,7 +71,7 @@ public class IgraController {
     @FXML
     public void handleNazadClick(ActionEvent event) {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/odabirIgraca.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/odabirIgraca.fxml"), ResourceBundle.getBundle("translation"));
             Parent root = (Parent) fxmlLoader.load();
             Scene newScene = new Scene(root);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
