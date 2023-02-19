@@ -10,6 +10,9 @@ import java.util.ResourceBundle;
 
 import static javafx.scene.layout.Region.USE_COMPUTED_SIZE;
 
+/**
+ * Main class for working with JavaFX framework
+ */
 public class Main extends Application {
 
     @Override
@@ -25,6 +28,11 @@ public class Main extends Application {
     }
 
 
+    /**
+     * The entry point of application.
+     *
+     * @param args the input arguments
+     */
     public static void main(String[] args) {
         launch(args);
 
