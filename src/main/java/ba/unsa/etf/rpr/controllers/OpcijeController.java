@@ -13,9 +13,17 @@ import java.io.IOException;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
+/**
+ * Controller for Opcije.
+ */
 public class OpcijeController {
     private ResourceBundle bundle;
 
+    /**
+     * Handle nazad click.
+     *
+     * @param event the event
+     */
     @FXML
     public void handleNazadClick(ActionEvent event) {
         try {
@@ -29,10 +37,20 @@ public class OpcijeController {
         }
     }
 
+    /**
+     * Handle english flag click.
+     *
+     * @param mouseEvent the mouse event
+     */
     public void handleEnglishFlagClick(MouseEvent mouseEvent) {
         //bundle = ResourceBundle.getBundle("src/main/resources/translation_en_US.properties");
     }
 
+    /**
+     * Handle bosnian flag click.
+     *
+     * @param mouseEvent the mouse event
+     */
     public void handleBosnianFlagClick(MouseEvent mouseEvent) {
         //bundle = ResourceBundle.getBundle("src/main/resources/translation.properties");
     }
