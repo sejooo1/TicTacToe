@@ -23,6 +23,10 @@ public class Igrac implements Idable{
 
     }
 
+    public Igrac(String ime) {
+        this.ime = ime;
+    }
+
     @Override
     public int getId() {
         return id;
