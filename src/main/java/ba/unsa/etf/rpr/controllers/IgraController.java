@@ -19,6 +19,9 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.ResourceBundle;
 
+/**
+ * Controller for Igra.
+ */
 public class IgraController {
     private Igrac igracX;
     private Igrac igracO;
@@ -59,15 +62,29 @@ public class IgraController {
 
     private int moves = 0;
 
+    /**
+     * Instantiates a new Igra controller.
+     *
+     * @param selectedIgrac1 the selected igrac 1
+     * @param selectedIgrac2 the selected igrac 2
+     */
     public IgraController(Igrac selectedIgrac1, Igrac selectedIgrac2) {
         igracX = selectedIgrac1;
         igracO = selectedIgrac2;
     }
 
+    /**
+     * Initialize.
+     */
     public void initialize() {
         naslov.setText("Igrač " + igracX.getIme() + " je na redu");
     }
 
+    /**
+     * Handle nazad click.
+     *
+     * @param event the event
+     */
     @FXML
     public void handleNazadClick(ActionEvent event) {
         try {
@@ -213,6 +230,11 @@ public class IgraController {
         button9.setDisable(true);
     }
 
+    /**
+     * Button clicked.
+     *
+     * @param actionEvent the action event
+     */
     @FXML
     public void buttonClicked(ActionEvent actionEvent) {
         Button button = (Button) actionEvent.getSource();
@@ -228,6 +250,11 @@ public class IgraController {
         }
     }
 
+    /**
+     * Handle restart click.
+     *
+     * @param actionEvent the action event
+     */
     public void handleRestartClick(ActionEvent actionEvent) {
         button1.setText("");
         button2.setText("");
