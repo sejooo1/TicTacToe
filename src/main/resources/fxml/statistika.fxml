@@ -13,7 +13,7 @@
    <children>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="5.0">
          <children>
-            <Label fx:id="igrac" text="Igrač:">
+            <Label fx:id="igrac" text="%igrač">
                <font>
                   <Font size="24.0" />
                </font>
@@ -24,7 +24,7 @@
       <Separator prefWidth="200.0" />
       <HBox alignment="CENTER" layoutX="10.0" layoutY="160.0" prefHeight="100.0" prefWidth="200.0" spacing="5.0">
          <children>
-            <Label fx:id="brojP" text="Broj pobjeda:">
+            <Label fx:id="brojP" text="%brojpobjeda">
                <font>
                   <Font size="24.0" />
                </font>
@@ -39,7 +39,7 @@
       <Separator prefWidth="200.0" />
       <HBox alignment="CENTER" layoutX="10.0" layoutY="213.0" prefHeight="100.0" prefWidth="200.0" spacing="5.0">
          <children>
-            <Label fx:id="brojN" text="Broj neriješenih:">
+            <Label fx:id="brojN" text="%brojneriješenih">
                <font>
                   <Font size="24.0" />
                </font>
@@ -54,7 +54,7 @@
       <Separator prefWidth="200.0" />
       <HBox alignment="CENTER" layoutX="10.0" layoutY="265.0" prefHeight="100.0" prefWidth="200.0" spacing="5.0">
          <children>
-            <Label fx:id="brojI" text="Broj izgubljenih:">
+            <Label fx:id="brojI" text="%brojporaza">
                <font>
                   <Font size="24.0" />
                </font>
@@ -69,7 +69,7 @@
       <Separator prefWidth="200.0" />
       <HBox alignment="CENTER" layoutX="10.0" layoutY="313.0" prefHeight="100.0" prefWidth="200.0" spacing="5.0">
          <children>
-            <Label fx:id="najviseP" text="Najviše pobjeda protiv:">
+            <Label fx:id="najviseP" text="%najvišepobjedaprotiv">
                <font>
                   <Font size="24.0" />
                </font>
@@ -82,7 +82,7 @@
          </children>
       </HBox>
       <Separator prefWidth="200.0" />
-      <Button mnemonicParsing="false" onAction="#handleNazadClick" text="Nazad">
+      <Button mnemonicParsing="false" onAction="#handleNazadClick" text="%nazad">
          <font>
             <Font size="24.0" />
          </font>
