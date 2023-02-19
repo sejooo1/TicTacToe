@@ -27,6 +27,11 @@ public class MecDAOSql extends AbstractDAO<Mec> implements MecDAO{
             instance=null;
     }
     @Override
+    public Mec getById(int id) throws MojException {
+        return executeQueryUnique("SELECT * FROM mecevi WHERE idMeca = ?", new Object[]{id});
+    }
+
+    @Override
     public Mec dajIzResultSeta(ResultSet rs) throws MojException {
         try {
         Mec q = new Mec();
