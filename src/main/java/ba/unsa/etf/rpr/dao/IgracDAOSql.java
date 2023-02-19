@@ -8,18 +8,29 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
+/**
+ * MySql implementation of DAO.
+ */
 public class IgracDAOSql extends AbstractDAO<Igrac> implements IgracDAO{
     private static IgracDAOSql instance = null;
     private IgracDAOSql() {
         super("igraci");
     }
 
+    /**
+     * Get instance igrac dao sql.
+     *
+     * @return the igrac dao sql
+     */
     public static IgracDAOSql getInstance(){
         if(instance==null)
             instance = new IgracDAOSql();
         return instance;
     }
 
+    /**
+     * Remove instance.
+     */
     public static void removeInstance(){
         if(instance!=null)
             instance=null;
