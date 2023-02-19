@@ -21,10 +21,7 @@ import javafx.stage.Stage;
 
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 
 public class StatistikaController {
@@ -89,7 +86,7 @@ public class StatistikaController {
     @FXML
     public void handleNazadClick(ActionEvent event) {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/main.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/main.fxml"), ResourceBundle.getBundle("translation"));
             Parent root = (Parent) fxmlLoader.load();
             Scene newScene = new Scene(root);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
