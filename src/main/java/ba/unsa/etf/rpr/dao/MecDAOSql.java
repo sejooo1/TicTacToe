@@ -9,6 +9,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
+/**
+ * MySql implementation of DAO.
+ */
 public class MecDAOSql extends AbstractDAO<Mec> implements MecDAO{
 
     private static MecDAOSql instance = null;
@@ -16,12 +19,20 @@ public class MecDAOSql extends AbstractDAO<Mec> implements MecDAO{
         super("mecevi");
     }
 
+    /**
+     * Get instance mec dao sql.
+     *
+     * @return the mec dao sql
+     */
     public static MecDAOSql getInstance(){
         if(instance==null)
             instance = new MecDAOSql();
         return instance;
     }
 
+    /**
+     * Remove instance.
+     */
     public static void removeInstance(){
         if(instance!=null)
             instance=null;
