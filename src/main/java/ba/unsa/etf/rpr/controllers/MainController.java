@@ -11,6 +11,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ResourceBundle;
 
 public class MainController {
     @FXML
@@ -28,7 +29,7 @@ public class MainController {
         try {
             Node source = (Node) event.getSource();
             Stage stage = (Stage) source.getScene().getWindow();
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/odabirIgraca.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/odabirIgraca.fxml"), ResourceBundle.getBundle("translation"));
             Parent root = fxmlLoader.load();
             Scene newScene = new Scene(root);
             stage.setScene(newScene);
@@ -41,7 +42,7 @@ public class MainController {
         try {
             Node source = (Node) event.getSource();
             Stage stage = (Stage) source.getScene().getWindow();
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/opcije.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/opcije.fxml"), ResourceBundle.getBundle("translation"));
             Parent root = fxmlLoader.load();
             Scene newScene = new Scene(root);
             stage.setScene(newScene);
@@ -54,7 +55,7 @@ public class MainController {
         try {
             Node source = (Node) event.getSource();
             Stage stage = (Stage) source.getScene().getWindow();
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/statistika.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/statistika.fxml"), ResourceBundle.getBundle("translation"));
             Parent root = fxmlLoader.load();
             Scene newScene = new Scene(root);
             stage.setScene(newScene);
@@ -67,7 +68,7 @@ public class MainController {
         try {
             Node source = (Node) event.getSource();
             Stage stage = (Stage) source.getScene().getWindow();
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/dodajIgrace.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/dodajIgrace.fxml"), ResourceBundle.getBundle("translation"));
             Parent root = fxmlLoader.load();
             Scene newScene = new Scene(root);
             stage.setScene(newScene);
