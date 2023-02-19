@@ -13,6 +13,9 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.ResourceBundle;
 
+/**
+ * Controller for Main.
+ */
 public class MainController {
     @FXML
     private Label novaIgra;
@@ -24,6 +27,11 @@ public class MainController {
     private Label dodajIgrace;
 
 
+    /**
+     * Handle nova igra click.
+     *
+     * @param event the event
+     */
     @FXML
     public void handleNovaIgraClick(MouseEvent event) {
         try {
@@ -38,6 +46,11 @@ public class MainController {
         }
     }
 
+    /**
+     * Handle opcije click.
+     *
+     * @param event the event
+     */
     public void handleOpcijeClick(MouseEvent event) {
         try {
             Node source = (Node) event.getSource();
@@ -51,6 +64,11 @@ public class MainController {
         }
     }
 
+    /**
+     * Handle statistika click.
+     *
+     * @param event the event
+     */
     public void handleStatistikaClick(MouseEvent event) {
         try {
             Node source = (Node) event.getSource();
@@ -64,6 +82,11 @@ public class MainController {
         }
     }
 
+    /**
+     * Handle dodaj igrace click.
+     *
+     * @param event the event
+     */
     public void handleDodajIgraceClick(MouseEvent event) {
         try {
             Node source = (Node) event.getSource();
@@ -77,6 +100,9 @@ public class MainController {
         }
     }
 
+    /**
+     * Initialize.
+     */
     public void initialize() {
         novaIgra.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
