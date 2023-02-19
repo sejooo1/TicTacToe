@@ -19,6 +19,9 @@ import java.io.IOException;
 import java.util.List;
 import java.util.ResourceBundle;
 
+/**
+ * Controller for OdabirIgraca.
+ */
 public class OdabirIgracaController {
     @FXML
     private ChoiceBox choiceBox1;
@@ -28,6 +31,9 @@ public class OdabirIgracaController {
     @FXML
     private Button igrajButton;
 
+    /**
+     * Initialize.
+     */
     public void initialize() {
         List<Igrac> igraci = null;
         try {
@@ -66,6 +72,11 @@ public class OdabirIgracaController {
         });
     }
 
+    /**
+     * Handle nazad click.
+     *
+     * @param event the event
+     */
     @FXML
     public void handleNazadClick(ActionEvent event) {
         try {
