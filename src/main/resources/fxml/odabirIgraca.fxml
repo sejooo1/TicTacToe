@@ -10,7 +10,7 @@
       <URL value="@/css/odabirIgraca.css" />
    </stylesheets>
    <children>
-      <Label fx:id="odaberi" text="Odaberi igrače:">
+      <Label fx:id="odaberi" text="%odaberiigrače">
          <font>
             <Font size="24.0" />
          </font>
@@ -28,12 +28,12 @@
       </HBox>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="5.0">
          <children>
-            <Button fx:id="igrajButton" mnemonicParsing="false" text="Igraj">
+            <Button fx:id="igrajButton" mnemonicParsing="false" text="%igraj">
                <font>
                   <Font size="24.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" onAction="#handleNazadClick" text="Nazad">
+            <Button mnemonicParsing="false" onAction="#handleNazadClick" text="%nazad">
                <font>
                   <Font size="24.0" />
                </font>
