@@ -8,18 +8,29 @@ import java.sql.SQLException;
 import java.util.Map;
 import java.util.TreeMap;
 
+/**
+ * MySql implementation of DAO.
+ */
 public class TipDAOSql  extends AbstractDAO<Tip> implements TipDAO{
     private static  TipDAOSql instance = null;
     private TipDAOSql() {
         super("tipovi");
     }
 
+    /**
+     * Get instance tip dao sql.
+     *
+     * @return the tip dao sql
+     */
     public static TipDAOSql getInstance(){
         if(instance==null)
             instance = new TipDAOSql();
         return instance;
     }
 
+    /**
+     * Remove instance.
+     */
     public static void removeInstance(){
         if(instance!=null)
             instance=null;
