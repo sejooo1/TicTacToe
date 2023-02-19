@@ -2,15 +2,27 @@ package ba.unsa.etf.rpr.domain;
 
 import java.util.Objects;
 
+/**
+ * JavaBean Class Tip.
+ */
 public class Tip implements Idable{
     private int id;
     private String opis;
 
+    /**
+     * Instantiates a new Tip.
+     *
+     * @param id   the id
+     * @param opis the opis
+     */
     public Tip(int id, String opis) {
         this.id = id;
         this.opis = opis;
     }
 
+    /**
+     * Instantiates a new Tip.
+     */
     public Tip() {
 
     }
@@ -25,10 +37,20 @@ public class Tip implements Idable{
         this.id = id;
     }
 
+    /**
+     * Gets opis.
+     *
+     * @return the opis
+     */
     public String getOpis() {
         return opis;
     }
 
+    /**
+     * Sets opis.
+     *
+     * @param opis the opis
+     */
     public void setOpis(String opis) {
         this.opis = opis;
     }
