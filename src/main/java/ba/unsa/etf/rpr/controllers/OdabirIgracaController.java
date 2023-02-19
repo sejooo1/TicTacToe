@@ -17,6 +17,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.ResourceBundle;
 
 public class OdabirIgracaController {
     @FXML
@@ -53,7 +54,7 @@ public class OdabirIgracaController {
         igrajButton.setOnAction(event -> {
             try {
                 IgraController controller = new IgraController(selectedIgrac1, selectedIgrac2);
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/igra.fxml"));
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/igra.fxml"), ResourceBundle.getBundle("translation"));
                 fxmlLoader.setController(controller);
                 Parent root = fxmlLoader.load();
                 Scene newScene = new Scene(root);
@@ -68,7 +69,7 @@ public class OdabirIgracaController {
     @FXML
     public void handleNazadClick(ActionEvent event) {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/main.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/main.fxml"), ResourceBundle.getBundle("translation"));
             Parent root = (Parent) fxmlLoader.load();
             Scene newScene = new Scene(root);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
