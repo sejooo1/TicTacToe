@@ -26,10 +26,10 @@
    <center>
       <VBox id="meni" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
-            <Label fx:id="novaIgra" text="Nova igra" />
-            <Label fx:id="opcije" layoutX="284.0" layoutY="122.0" text="Opcije" />
-            <Label fx:id="statistika" layoutX="293.0" layoutY="130.0" text="Statistika" />
-            <Label fx:id="dodajIgrace" layoutX="286.0" layoutY="139.0" text="Dodaj igrače" />
+            <Label fx:id="novaIgra" text="%novaigra" />
+            <Label fx:id="opcije" layoutX="284.0" layoutY="122.0" text="%opcije" />
+            <Label fx:id="statistika" layoutX="293.0" layoutY="130.0" text="%statistika" />
+            <Label fx:id="dodajIgrace" layoutX="286.0" layoutY="139.0" text="%dodajigrace" />
          </children>
          <padding>
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
