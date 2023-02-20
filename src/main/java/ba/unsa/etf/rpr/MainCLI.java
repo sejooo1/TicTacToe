@@ -45,6 +45,18 @@ public class MainCLI {
                 for (int i = 0; i < igraci.size(); i++) {
                     System.out.println(i+1 + ". " + igraci.get(i).getIme());
                 }
+                int idX = Integer.parseInt(System.console().readLine());
+                int idO;
+                Igrac igracX = igracManager.getById(idX);
+                do {
+                    System.out.println("Izaberi drugog igrača!");
+                    for (int i = 0; i < igraci.size(); i++) {
+                        System.out.println(i+1 + ". " + igraci.get(i).getIme());
+                    }
+                    idO = Integer.parseInt(System.console().readLine());
+                    if (idX == idO) System.out.println("Ne možete odabrati istog igrača!");
+                }while (idX == idO);
+                Igrac igracO = igracManager.getById(idO);
 
             } else if (cl.hasOption(statistika.getOpt()) || cl.hasOption(statistika.getLongOpt())) {
                 IgracManager igracManager = new IgracManager();
