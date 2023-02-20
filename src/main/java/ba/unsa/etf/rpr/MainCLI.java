@@ -26,6 +26,11 @@ public class MainCLI {
     }
 
     public static void main(String[] args) throws Exception{
+        Options options = addOptions();
+
+        CommandLineParser commandLineParser = new DefaultParser();
+
+        CommandLine cl = commandLineParser.parse(options, args);
 
     }
 }
