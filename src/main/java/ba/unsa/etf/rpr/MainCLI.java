@@ -3,6 +3,8 @@ package ba.unsa.etf.rpr;
 import ba.unsa.etf.rpr.business.IgracManager;
 import ba.unsa.etf.rpr.business.MecManager;
 import ba.unsa.etf.rpr.domain.Igrac;
+import ba.unsa.etf.rpr.domain.Mec;
+import ba.unsa.etf.rpr.exceptions.MojException;
 import org.apache.commons.cli.*;
 
 import java.io.PrintWriter;
@@ -144,15 +146,54 @@ public class MainCLI {
                     if (provjeriPobjedu()) {
                         if (trenutni == 'X'){
                             System.out.println(igracX.getIme() + " je pobijedio!");
+                            igracX.uvecajPobjedu();
+                            igracO.uvecajPoraz();
+                            Mec mec = new Mec();
+                            mec.setIdX(igracX.getId());
+                            mec.setIdO(igracO.getId());
+                            mec.setIdTipa(1);
+                            try {
+                                igracManager.update(igracX);
+                                igracManager.update(igracO);
+                                mecManager.add(mec);
+                            } catch (MojException e) {
+                                throw new RuntimeException(e);
+                            }
                         }
                         if (trenutni == 'O'){
                             System.out.println(igracO.getIme() + " je pobijedio!");
+                            igracX.uvecajPoraz();
+                            igracO.uvecajPobjedu();
+                            Mec mec = new Mec();
+                            mec.setIdX(igracX.getId());
+                            mec.setIdO(igracO.getId());
+                            mec.setIdTipa(2);
+                            try {
+                                igracManager.update(igracX);
+                                igracManager.update(igracO);
+                                mecManager.add(mec);
+                            } catch (MojException e) {
+                                throw new RuntimeException(e);
+                            }
                         }
                         return;
                     }
                     zamjenaIgraca();
                 }
                 System.out.println("Neriješeno!");
+                igracX.uvecajNerijesene();
+                igracO.uvecajNerijesene();
+                Mec mec = new Mec();
+                mec.setIdX(igracX.getId());
+                mec.setIdO(igracO.getId());
+                mec.setIdTipa(3);
+                try {
+                    igracManager.update(igracX);
+                    igracManager.update(igracO);
+                    mecManager.add(mec);
+                } catch (MojException e) {
+                    throw new RuntimeException(e);
+                }
 
             } else if (cl.hasOption(statistika.getOpt()) || cl.hasOption(statistika.getLongOpt())) {
                 IgracManager igracManager = new IgracManager();
