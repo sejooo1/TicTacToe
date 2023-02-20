@@ -14,12 +14,18 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 
+/**
+ * Test class for IgracManager.
+ */
 public class IgracManagerTest {
     private IgracManager igracManager;
     private Igrac igrac;
     private IgracDAOSql igracDAOSQLMock;
     private List<Igrac> igraci;
 
+    /**
+     * Priprema.
+     */
     @BeforeEach
     public void priprema() {
         igrac = new Igrac();
@@ -32,6 +38,9 @@ public class IgracManagerTest {
         igracManager = new IgracManager();
     }
 
+    /**
+     * Test get all.
+     */
     @Test
     public void testGetAll(){
         try {
@@ -45,6 +54,9 @@ public class IgracManagerTest {
         }
     }
 
+    /**
+     * Test get by id.
+     */
     @Test
     public void testGetById(){
         try {
@@ -55,6 +67,9 @@ public class IgracManagerTest {
         }
     }
 
+    /**
+     * Test daj po imenu.
+     */
     @Test
     public void testDajPoImenu(){
         try {
@@ -66,6 +81,11 @@ public class IgracManagerTest {
         }
     }
 
+    /**
+     * Test get all mock.
+     *
+     * @throws MojException the moj exception
+     */
     @Test
     public void testGetAllMock() throws MojException {
         List<Igrac> mockedIgraci = new ArrayList<>();
@@ -86,6 +106,11 @@ public class IgracManagerTest {
         }
     }
 
+    /**
+     * Test update mock.
+     *
+     * @throws MojException the moj exception
+     */
     @Test
     public void testUpdateMock() throws MojException {
         List<Igrac> mockedIgraci = new ArrayList<>();
@@ -106,6 +131,11 @@ public class IgracManagerTest {
         }
     }
 
+    /**
+     * Test add mock.
+     *
+     * @throws MojException the moj exception
+     */
     @Test
     public void testAddMock() throws MojException {
         List<Igrac> mockedIgraci = new ArrayList<>();
@@ -125,6 +155,11 @@ public class IgracManagerTest {
         }
     }
 
+    /**
+     * Test delete mock.
+     *
+     * @throws MojException the moj exception
+     */
     @Test
     public void testDeleteMock() throws MojException {
         List<Igrac> mockedIgraci = new ArrayList<>();
