@@ -11,6 +11,9 @@ import java.io.PrintWriter;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * Main class using Command Line Interface.
+ */
 public class MainCLI {
     private static final Option novaIgra = new Option("n", "nova-igra", false, "Započinje novu igru!");
     private static final Option statistika = new Option("s", "statistika", false, "Statistika igrača");
@@ -22,6 +25,11 @@ public class MainCLI {
 
     private static char trenutni = 'X';
 
+    /**
+     * Print formatted options.
+     *
+     * @param options the options
+     */
     public static void printFormattedOptions(Options options) {
         HelpFormatter helpFormatter = new HelpFormatter();
         PrintWriter printWriter = new PrintWriter(System.out);
@@ -30,6 +38,11 @@ public class MainCLI {
         printWriter.close();
     }
 
+    /**
+     * Add options options.
+     *
+     * @return the options
+     */
     public static Options addOptions() {
         Options options = new Options();
         options.addOption(novaIgra);
@@ -110,6 +123,12 @@ public class MainCLI {
         trenutni = trenutni == 'X' ? 'O' : 'X';
     }
 
+    /**
+     * The entry point of application.
+     *
+     * @param args the input arguments
+     * @throws Exception the exception
+     */
     public static void main(String[] args) throws Exception{
         Options options = addOptions();
 
