@@ -1,13 +1,16 @@
 package ba.unsa.etf.rpr;
 
+import ba.unsa.etf.rpr.business.IgracManager;
+import ba.unsa.etf.rpr.domain.Igrac;
 import org.apache.commons.cli.*;
 
 import java.io.PrintWriter;
+import java.util.List;
 
 public class MainCLI {
-    private static final Option novaIgra = new Option("ni", "nova-igra", false, "Započinje novu igru!");
+    private static final Option novaIgra = new Option("n", "nova-igra", false, "Započinje novu igru!");
     private static final Option statistika = new Option("s", "statistika", false, "Statistika igrača");
-    private static final Option dodajIgrace = new Option("di", "dodaj-igrace", false, "Dodaj nove igrače u bazu");
+    private static final Option dodajIgrace = new Option("d", "dodaj-igrace", false, "Dodaj nove igrače u bazu");
 
     public static void printFormattedOptions(Options options) {
         HelpFormatter helpFormatter = new HelpFormatter();
@@ -30,7 +33,34 @@ public class MainCLI {
 
         CommandLineParser commandLineParser = new DefaultParser();
 
-        CommandLine cl = commandLineParser.parse(options, args);
+        try {
+            CommandLine cl = commandLineParser.parse(options, args);
 
+            if (cl.hasOption(novaIgra.getOpt()) || cl.hasOption(novaIgra.getLongOpt())) {
+                //
+            } else if (cl.hasOption(statistika.getOpt()) || cl.hasOption(statistika.getLongOpt())) {
+                IgracManager igracManager = new IgracManager();
+                List<Igrac> igraci = igracManager.getAll();
+                System.out.println("Statistika igrača:");
+                System.out.println("------------------");
+                for (Igrac igrac : igraci) {
+                    System.out.println(igrac.getIme() + ": " + igrac.getBrojPobjeda() + " pobjeda, " + igrac.getBrojNerijesenih() + " neriješenih, " + igrac.getBrojPoraza() + " poraza");
+                }
+            } else if (cl.hasOption(dodajIgrace.getOpt()) || cl.hasOption(dodajIgrace.getLongOpt())) {/*
+                System.out.println("Unesite podatke za novog igrača:");
+                System.out.print("Ime: ");
+                String name = System.console().readLine();
+                Player player = new Player(name);
+                DatabaseController.getInstance().addPlayer(player);
+                System.out.println("Igrač " + name + " uspješno dodan u bazu!");*/
+            } else {
+                printFormattedOptions(options);
+            }
+        } catch (ParseException e) {
+            System.err.println("Neispravan argument!");
+            printFormattedOptions(options);
+        }
     }
+
 }
+
