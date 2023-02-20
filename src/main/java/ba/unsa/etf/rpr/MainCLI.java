@@ -40,7 +40,11 @@ public class MainCLI {
             if (cl.hasOption(novaIgra.getOpt()) || cl.hasOption(novaIgra.getLongOpt())) {
                 IgracManager igracManager = new IgracManager();
                 MecManager mecManager = new MecManager();
-
+                List<Igrac> igraci = igracManager.getAll();
+                System.out.println("Izaberi prvog igrača!");
+                for (int i = 0; i < igraci.size(); i++) {
+                    System.out.println(i+1 + ". " + igraci.get(i).getIme());
+                }
 
             } else if (cl.hasOption(statistika.getOpt()) || cl.hasOption(statistika.getLongOpt())) {
                 IgracManager igracManager = new IgracManager();
