@@ -46,13 +46,18 @@ public class MainCLI {
                 for (Igrac igrac : igraci) {
                     System.out.println(igrac.getIme() + ": " + igrac.getBrojPobjeda() + " pobjeda, " + igrac.getBrojNerijesenih() + " neriješenih, " + igrac.getBrojPoraza() + " poraza");
                 }
-            } else if (cl.hasOption(dodajIgrace.getOpt()) || cl.hasOption(dodajIgrace.getLongOpt())) {/*
+            } else if (cl.hasOption(dodajIgrace.getOpt()) || cl.hasOption(dodajIgrace.getLongOpt())) {
+                IgracManager igracManager = new IgracManager();
                 System.out.println("Unesite podatke za novog igrača:");
                 System.out.print("Ime: ");
                 String name = System.console().readLine();
-                Player player = new Player(name);
-                DatabaseController.getInstance().addPlayer(player);
-                System.out.println("Igrač " + name + " uspješno dodan u bazu!");*/
+                Igrac igrac = new Igrac();
+                igrac.setIme(name);
+                igrac.setBrojPobjeda(0);
+                igrac.setBrojPoraza(0);
+                igrac.setBrojNerijesenih(0);
+                igracManager.add(igrac);
+                System.out.println("Igrač " + name + " uspješno dodan u bazu!");
             } else {
                 printFormattedOptions(options);
             }
