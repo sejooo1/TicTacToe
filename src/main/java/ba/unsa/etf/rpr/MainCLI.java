@@ -1,6 +1,7 @@
 package ba.unsa.etf.rpr;
 
 import ba.unsa.etf.rpr.business.IgracManager;
+import ba.unsa.etf.rpr.business.MecManager;
 import ba.unsa.etf.rpr.domain.Igrac;
 import org.apache.commons.cli.*;
 
@@ -37,6 +38,9 @@ public class MainCLI {
             CommandLine cl = commandLineParser.parse(options, args);
 
             if (cl.hasOption(novaIgra.getOpt()) || cl.hasOption(novaIgra.getLongOpt())) {
+                IgracManager igracManager = new IgracManager();
+                MecManager mecManager = new MecManager();
+
 
             } else if (cl.hasOption(statistika.getOpt()) || cl.hasOption(statistika.getLongOpt())) {
                 IgracManager igracManager = new IgracManager();
