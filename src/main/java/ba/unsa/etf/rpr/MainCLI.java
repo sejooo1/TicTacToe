@@ -24,4 +24,8 @@ public class MainCLI {
         options.addOption(dodajIgrace);
         return options;
     }
+
+    public static void main(String[] args) throws Exception{
+
+    }
 }
