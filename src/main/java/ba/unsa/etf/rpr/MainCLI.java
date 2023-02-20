@@ -37,7 +37,7 @@ public class MainCLI {
             CommandLine cl = commandLineParser.parse(options, args);
 
             if (cl.hasOption(novaIgra.getOpt()) || cl.hasOption(novaIgra.getLongOpt())) {
-                //
+
             } else if (cl.hasOption(statistika.getOpt()) || cl.hasOption(statistika.getLongOpt())) {
                 IgracManager igracManager = new IgracManager();
                 List<Igrac> igraci = igracManager.getAll();
