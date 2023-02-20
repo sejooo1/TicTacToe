@@ -14,12 +14,18 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 
+/**
+ * Test class for MecManager.
+ */
 class MecManagerTest {
     private MecManager mecManager;
     private Mec mec;
     private MecDAOSql mecDAOSQLMock;
     private List<Mec> mecevi;
 
+    /**
+     * Priprema.
+     */
     @BeforeEach
     public void priprema() {
         mec = new Mec();
@@ -34,7 +40,9 @@ class MecManagerTest {
     }
 
 
-
+    /**
+     * Test get by id.
+     */
     @Test
     public void testGetById(){
         try {
@@ -45,6 +53,9 @@ class MecManagerTest {
         }
     }
 
+    /**
+     * Test daj pobjede igraca.
+     */
     @Test
     public void testDajPobjedeIgraca(){
         try {
@@ -55,6 +66,11 @@ class MecManagerTest {
         }
     }
 
+    /**
+     * Test get all mock.
+     *
+     * @throws MojException the moj exception
+     */
     @Test
     public void testGetAllMock() throws MojException {
         when(mecDAOSQLMock.getAll()).thenReturn(mecevi);
@@ -68,6 +84,11 @@ class MecManagerTest {
         }
     }
 
+    /**
+     * Test update mock.
+     *
+     * @throws MojException the moj exception
+     */
     @Test
     public void testUpdateMock() throws MojException {
         when(mecDAOSQLMock.getAll()).thenReturn(mecevi);
@@ -84,6 +105,11 @@ class MecManagerTest {
         }
     }
 
+    /**
+     * Test add mock.
+     *
+     * @throws MojException the moj exception
+     */
     @Test
     public void testAddMock() throws MojException {
         when(mecDAOSQLMock.getAll()).thenReturn(mecevi);
@@ -99,6 +125,11 @@ class MecManagerTest {
         }
     }
 
+    /**
+     * Test delete mock.
+     *
+     * @throws MojException the moj exception
+     */
     @Test
     public void testDeleteMock() throws MojException {
         when(mecDAOSQLMock.getAll()).thenReturn(mecevi);
