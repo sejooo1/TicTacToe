@@ -7,11 +7,18 @@ import org.apache.commons.cli.*;
 
 import java.io.PrintWriter;
 import java.util.List;
+import java.util.Scanner;
 
 public class MainCLI {
     private static final Option novaIgra = new Option("n", "nova-igra", false, "Započinje novu igru!");
     private static final Option statistika = new Option("s", "statistika", false, "Statistika igrača");
     private static final Option dodajIgrace = new Option("d", "dodaj-igrace", false, "Dodaj nove igrače u bazu");
+
+    private static final int vel = 3;
+
+    private static final char[][] matrica = new char[vel][vel];
+
+    private static char trenutni = 'X';
 
     public static void printFormattedOptions(Options options) {
         HelpFormatter helpFormatter = new HelpFormatter();
@@ -27,6 +34,78 @@ public class MainCLI {
         options.addOption(statistika);
         options.addOption(dodajIgrace);
         return options;
+    }
+
+    private static void postaviMatricu() {
+        for (int i = 0; i < vel; i++) {
+            for (int j = 0; j < vel; j++) {
+                matrica[i][j] = '-';
+            }
+        }
+    }
+
+    private static void prikaziMatricu() {
+        System.out.println("-------------");
+        for (int i = 0; i < vel; i++) {
+            System.out.print("| ");
+            for (int j = 0; j < vel; j++) {
+                System.out.print(matrica[i][j] + " | ");
+            }
+            System.out.println();
+            System.out.println("-------------");
+        }
+    }
+
+    private static boolean daLiJePuna() {
+        for (int i = 0; i < vel; i++) {
+            for (int j = 0; j < vel; j++) {
+                if (matrica[i][j] == '-') {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    private static void red(Igrac igracX, Igrac igracO) {
+        if (trenutni == 'X') System.out.println(igracX.getIme() + " je na redu:");
+        if (trenutni == 'O') System.out.println(igracO.getIme() + " je na redu:");
+        Scanner scanner = new Scanner(System.in);
+        int row, col;
+        do {
+            System.out.print("Unesi broj reda (1-" + vel + "): ");
+            row = scanner.nextInt() - 1;
+            System.out.print("Unesi broj kolone (1-" + vel + "): ");
+            col = scanner.nextInt() - 1;
+        } while (row < 0 || col < 0 || row >= vel || col >= vel || matrica[row][col] != '-');
+        matrica[row][col] = trenutni;
+    }
+
+    private static boolean provjeriPobjedu() {
+
+        for (int i = 0; i < vel; i++) {
+            if (matrica[i][0] == matrica[i][1] && matrica[i][1] == matrica[i][2] && matrica[i][0] != '-') {
+                return true;
+            }
+        }
+
+        for (int j = 0; j < vel; j++) {
+            if (matrica[0][j] == matrica[1][j] && matrica[1][j] == matrica[2][j] && matrica[0][j] != '-') {
+                return true;
+            }
+        }
+
+        if (matrica[0][0] == matrica[1][1] && matrica[1][1] == matrica[2][2] && matrica[0][0] != '-') {
+            return true;
+        }
+        if (matrica[2][0] == matrica[1][1] && matrica[1][1] == matrica[0][2] && matrica[2][0] != '-') {
+            return true;
+        }
+        return false;
+    }
+
+    private static void zamjenaIgraca() {
+        trenutni = trenutni == 'X' ? 'O' : 'X';
     }
 
     public static void main(String[] args) throws Exception{
@@ -57,6 +136,23 @@ public class MainCLI {
                     if (idX == idO) System.out.println("Ne možete odabrati istog igrača!");
                 }while (idX == idO);
                 Igrac igracO = igracManager.getById(idO);
+                postaviMatricu();
+                prikaziMatricu();
+                while (!daLiJePuna()) {
+                    red(igracX, igracO);
+                    prikaziMatricu();
+                    if (provjeriPobjedu()) {
+                        if (trenutni == 'X'){
+                            System.out.println(igracX.getIme() + " je pobijedio!");
+                        }
+                        if (trenutni == 'O'){
+                            System.out.println(igracO.getIme() + " je pobijedio!");
+                        }
+                        return;
+                    }
+                    zamjenaIgraca();
+                }
+                System.out.println("Neriješeno!");
 
             } else if (cl.hasOption(statistika.getOpt()) || cl.hasOption(statistika.getLongOpt())) {
                 IgracManager igracManager = new IgracManager();
