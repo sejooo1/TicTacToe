@@ -16,4 +16,12 @@ public class MainCLI {
         helpFormatter.printOptions(printWriter, 150, options, 2, 7);
         printWriter.close();
     }
+
+    public static Options addOptions() {
+        Options options = new Options();
+        options.addOption(novaIgra);
+        options.addOption(statistika);
+        options.addOption(dodajIgrace);
+        return options;
+    }
 }
